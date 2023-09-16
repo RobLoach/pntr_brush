@@ -77,10 +77,9 @@ int main() {
         pntr_brush_draw_image(brush, gradient, image->width - gradient->width - 10, 10);
     }
 
-    pntr_save_image(image, "screenshot.png");
+    pntr_save_image(image, "pntr_brush_test.png");
 
     pntr_unload_image(gradient);
-    pntr_unload_font(font);
     pntr_unload_image(image);
     pntr_unload_brush(brush);
 
@@ -88,6 +87,7 @@ int main() {
     {
         pntr_image* image = pntr_gen_image_color(320, 160, PNTR_WHITE);
         pntr_brush* brush = pntr_load_brush(image);
+        pntr_brush_font(brush, font);
 
         pntr_brush_begin_path(brush);
         brush->strokeStyle = PNTR_GREEN;  // This path is green.
@@ -105,11 +105,22 @@ int main() {
         pntr_brush_fill_style(brush, PNTR_RED);
         pntr_brush_fill_rect(brush, 30, 10, 30, 30);
 
-        pntr_save_image(image, "screenshot2.png");
+        pntr_brush_begin_path(brush);
+        brush->fillStyle = PNTR_BROWN;
+        pntr_brush_move_to(brush, 230, 100);
+        pntr_brush_arc(brush, 230, 100, 30, 70, 320, 500);
+        pntr_brush_fill(brush);
+
+        brush->fillStyle = PNTR_BLACK;
+        pntr_brush_fill_text(brush, "Hello World!", 10, 50);
+
+        pntr_save_image(image, "screenshot.png");
 
         pntr_unload_brush(brush);
         pntr_unload_image(image);
     }
+
+    pntr_unload_font(font);
 
     return 0;
 }
