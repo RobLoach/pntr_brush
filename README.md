@@ -38,6 +38,8 @@ pntr_brush_fill(brush);
 
 brush->fillStyle = PNTR_BLACK;
 pntr_brush_fill_text(brush, "Hello World!", 10, 50);
+
+pntr_unload_brush(brush);
 ```
 
 ![pntr_brush screenshot](docs/screenshot.png)
