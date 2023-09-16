@@ -78,42 +78,37 @@ typedef struct pntr_brush {
     pntr_font* font;
 } pntr_brush;
 
+// Brush methods
 PNTR_BRUSH_API pntr_brush* pntr_load_brush(pntr_image* dst);
 PNTR_BRUSH_API void pntr_unload_brush(pntr_brush* brush);
 PNTR_BRUSH_API void pntr_brush_reset(pntr_brush* brush);
 
-// Drawing Methods
+// Drawing methods
 PNTR_BRUSH_API void pntr_brush_fill_rect(pntr_brush* brush, int x, int y, int width, int height);
 PNTR_BRUSH_API void pntr_brush_stroke_rect(pntr_brush* brush, int x, int y, int width, int height);
 PNTR_BRUSH_API void pntr_brush_clear_rect(pntr_brush* brush, int x, int y, int width, int height);
+PNTR_BRUSH_API void pntr_brush_stroke_text(pntr_brush* brush, const char* text, int posX, int posY);
+PNTR_BRUSH_API void pntr_brush_fill_text(pntr_brush* brush, const char* text, int posX, int posY);
+PNTR_BRUSH_API void pntr_brush_draw_image(pntr_brush* brush, pntr_image* image, int posX, int posY);
+PNTR_BRUSH_API void pntr_brush_fill(pntr_brush* brush);
+PNTR_BRUSH_API void pntr_brush_stroke(pntr_brush* brush);
+PNTR_BRUSH_API void pntr_brush_arc(pntr_brush* brush, int centerX, int centerY, float radius, float startAngle, float endAngle, int segments);
 
-
+// Path methods
 PNTR_BRUSH_API void pntr_brush_begin_path(pntr_brush* brush);
 PNTR_BRUSH_API void pntr_brush_move_to(pntr_brush* brush, int posX, int posY);
 PNTR_BRUSH_API void pntr_brush_line_to(pntr_brush* brush, int posX, int posY);
 PNTR_BRUSH_API void pntr_brush_rect(pntr_brush* brush, int x, int y, int width, int height);
-PNTR_BRUSH_API void pntr_brush_stroke(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_fill(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_stroke_style(pntr_brush* brush, pntr_color color);
-PNTR_BRUSH_API void pntr_brush_line_width(pntr_brush* brush, int lineWidth);
 PNTR_BRUSH_API void pntr_brush_close_path(pntr_brush* brush);
-
-PNTR_BRUSH_API void pntr_brush_arc(pntr_brush* brush, int centerX, int centerY, float radius, float startAngle, float endAngle, int segments);
-PNTR_BRUSH_API void pntr_brush_draw_image(pntr_brush* brush, pntr_image* image, int posX, int posY);
-PNTR_BRUSH_API void pntr_brush_font(pntr_brush* brush, pntr_font* font);
-
 PNTR_BRUSH_API void pntr_brush_save(pntr_brush* brush);
 PNTR_BRUSH_API void pntr_brush_restore(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_font(pntr_brush* brush, pntr_font* font);
 
-PNTR_BRUSH_API void pntr_brush_fill_text(pntr_brush* brush, const char* text, int posX, int posY);
-PNTR_BRUSH_API void pntr_brush_stroke_text(pntr_brush* brush, const char* text, int posX, int posY);
-
-PNTR_BRUSH_API int pntr_brush_measure_text(pntr_brush* brush, const char* text);
-
+// Property methods
+PNTR_BRUSH_API void pntr_brush_line_width(pntr_brush* brush, int lineWidth);
+PNTR_BRUSH_API void pntr_brush_stroke_style(pntr_brush* brush, pntr_color color);
 PNTR_BRUSH_API void pntr_brush_fill_style(pntr_brush* brush, pntr_color color);
-
-
+PNTR_BRUSH_API void pntr_brush_font(pntr_brush* brush, pntr_font* font);
+PNTR_BRUSH_API int pntr_brush_measure_text(pntr_brush* brush, const char* text);
 
 #ifdef __cplusplus
 }
@@ -137,7 +132,7 @@ void* _pntr_brush_realloc(void *ptr, size_t size) {
 }
 #define cvector_clib_realloc _pntr_brush_realloc
 //#define cvector_clib_assert assert
-//#define cvector_clib_memcpy memcpy
+#define cvector_clib_memcpy pntr_memory_copy
 //#define cvector_clib_memmove
 
 PNTR_BRUSH_API pntr_brush* pntr_load_brush(pntr_image* dst) {
