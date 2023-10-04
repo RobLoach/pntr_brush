@@ -47,36 +47,36 @@ pntr_unload_brush(brush);
 ## API
 ``` c
 // Brush methods
-PNTR_BRUSH_API pntr_brush* pntr_load_brush(pntr_image* dst);
-PNTR_BRUSH_API void pntr_unload_brush(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_reset(pntr_brush* brush);
+pntr_brush* pntr_load_brush(pntr_image* dst);
+void pntr_unload_brush(pntr_brush* brush);
+void pntr_brush_reset(pntr_brush* brush);
 
 // Drawing methods
-PNTR_BRUSH_API void pntr_brush_fill_rect(pntr_brush* brush, int x, int y, int width, int height);
-PNTR_BRUSH_API void pntr_brush_stroke_rect(pntr_brush* brush, int x, int y, int width, int height);
-PNTR_BRUSH_API void pntr_brush_clear_rect(pntr_brush* brush, int x, int y, int width, int height);
-PNTR_BRUSH_API void pntr_brush_stroke_text(pntr_brush* brush, const char* text, int posX, int posY);
-PNTR_BRUSH_API void pntr_brush_fill_text(pntr_brush* brush, const char* text, int posX, int posY);
-PNTR_BRUSH_API void pntr_brush_draw_image(pntr_brush* brush, pntr_image* image, int posX, int posY);
-PNTR_BRUSH_API void pntr_brush_fill(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_stroke(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_arc(pntr_brush* brush, int centerX, int centerY, float radius, float startAngle, float endAngle, int segments);
+void pntr_brush_fill_rect(pntr_brush* brush, int x, int y, int width, int height);
+void pntr_brush_stroke_rect(pntr_brush* brush, int x, int y, int width, int height);
+void pntr_brush_clear_rect(pntr_brush* brush, int x, int y, int width, int height);
+void pntr_brush_stroke_text(pntr_brush* brush, const char* text, int posX, int posY);
+void pntr_brush_fill_text(pntr_brush* brush, const char* text, int posX, int posY);
+void pntr_brush_draw_image(pntr_brush* brush, pntr_image* image, int posX, int posY);
+void pntr_brush_fill(pntr_brush* brush);
+void pntr_brush_stroke(pntr_brush* brush);
+void pntr_brush_arc(pntr_brush* brush, int centerX, int centerY, float radius, float startAngle, float endAngle, int segments);
 
 // Path methods
-PNTR_BRUSH_API void pntr_brush_begin_path(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_move_to(pntr_brush* brush, int posX, int posY);
-PNTR_BRUSH_API void pntr_brush_line_to(pntr_brush* brush, int posX, int posY);
-PNTR_BRUSH_API void pntr_brush_rect(pntr_brush* brush, int x, int y, int width, int height);
-PNTR_BRUSH_API void pntr_brush_close_path(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_save(pntr_brush* brush);
-PNTR_BRUSH_API void pntr_brush_restore(pntr_brush* brush);
+void pntr_brush_begin_path(pntr_brush* brush);
+void pntr_brush_move_to(pntr_brush* brush, int posX, int posY);
+void pntr_brush_line_to(pntr_brush* brush, int posX, int posY);
+void pntr_brush_rect(pntr_brush* brush, int x, int y, int width, int height);
+void pntr_brush_close_path(pntr_brush* brush);
+void pntr_brush_save(pntr_brush* brush);
+void pntr_brush_restore(pntr_brush* brush);
 
 // Property methods
-PNTR_BRUSH_API void pntr_brush_line_width(pntr_brush* brush, int lineWidth);
-PNTR_BRUSH_API void pntr_brush_stroke_style(pntr_brush* brush, pntr_color color);
-PNTR_BRUSH_API void pntr_brush_fill_style(pntr_brush* brush, pntr_color color);
-PNTR_BRUSH_API void pntr_brush_font(pntr_brush* brush, pntr_font* font);
-PNTR_BRUSH_API int pntr_brush_measure_text(pntr_brush* brush, const char* text);
+void pntr_brush_line_width(pntr_brush* brush, int lineWidth);
+void pntr_brush_stroke_style(pntr_brush* brush, pntr_color color);
+void pntr_brush_fill_style(pntr_brush* brush, pntr_color color);
+void pntr_brush_font(pntr_brush* brush, pntr_font* font);
+int pntr_brush_measure_text(pntr_brush* brush, const char* text);
 ```
 
 # License
