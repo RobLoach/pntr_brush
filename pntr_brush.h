@@ -175,7 +175,7 @@ PNTR_BRUSH_API void pntr_brush_fill_rect(pntr_brush* brush, int x, int y, int wi
 }
 
 PNTR_BRUSH_API void pntr_brush_stroke_rect(pntr_brush* brush, int x, int y, int width, int height) {
-    pntr_draw_rectangle(brush->dst, x, y, width, height, brush->lineWidth, brush->strokeStyle);
+    pntr_draw_rectangle_thick(brush->dst, x, y, width, height, brush->lineWidth, brush->strokeStyle);
 }
 
 #ifndef PNTR_BRUSH_PIXEL
