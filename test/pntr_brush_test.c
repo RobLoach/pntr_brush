@@ -20,15 +20,15 @@ int main() {
     // Variables
     brush->fillStyle = PNTR_RED;
     pntr_brush_fill_style(brush, PNTR_BLUE);
-    assert(brush->fillStyle.data == PNTR_BLUE.data);
+    assert(brush->fillStyle.value == PNTR_BLUE.value);
 
     brush->strokeStyle = PNTR_PURPLE;
     pntr_brush_stroke_style(brush, PNTR_BLUE);
-    assert(brush->strokeStyle.data == PNTR_BLUE.data);
+    assert(brush->strokeStyle.value == PNTR_BLUE.value);
 
     brush->lineWidth = 4;
     pntr_brush_stroke_style(brush, PNTR_BLUE);
-    assert(brush->strokeStyle.data == PNTR_BLUE.data);
+    assert(brush->strokeStyle.value == PNTR_BLUE.value);
 
     pntr_brush_reset(brush);
 
@@ -64,7 +64,7 @@ int main() {
         pntr_brush_save(brush);
         pntr_brush_stroke_style(brush, PNTR_BLUE);
         pntr_brush_restore(brush);
-        assert(brush->strokeStyle.data == (PNTR_RED).data);
+        assert(brush->strokeStyle.value == (PNTR_RED).value);
     }
 
     // pntr_brush_draw_fill_text()
