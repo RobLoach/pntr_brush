@@ -45,12 +45,6 @@ extern "C" {
 #define PNTR_BRUSH_MAX_PATHS 64
 #endif
 
-// TODO: REmove this
-#ifndef PNTR_BRUSH_PNTR_H
-#define PNTR_BRUSH_PNTR_H "pntr.h"
-#endif
-#include PNTR_BRUSH_PNTR_H
-
 typedef enum pntr_brush_action_type {
     PNTR_BRUSH_ACTION_TYPE_MOVE_TO = 0,
     PNTR_BRUSH_ACTION_TYPE_LINE_TO,
@@ -123,17 +117,6 @@ PNTR_BRUSH_API int pntr_brush_measure_text(pntr_brush* brush, const char* text);
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#define cvector_clib_free pntr_unload_memory
-#define cvector_clib_calloc(nitems, size) pntr_load_memory(nitems * size)
-void* _pntr_brush_realloc(void *ptr, size_t size) {
-    pntr_unload_memory(ptr);
-    return pntr_load_memory(size);
-}
-#define cvector_clib_realloc _pntr_brush_realloc
-//#define cvector_clib_assert assert
-#define cvector_clib_memcpy pntr_memory_copy
-//#define cvector_clib_memmove
 
 PNTR_BRUSH_API pntr_brush* pntr_load_brush(pntr_image* dst) {
     if (dst == NULL) {
@@ -215,7 +198,7 @@ PNTR_BRUSH_API void pntr_brush_begin_path(pntr_brush* brush) {
     brush->pathSize = 0;
 }
 
-PNTR_BRUSH_API inline void pntr_brush_move_to(pntr_brush* brush, int posX, int posY) {
+PNTR_BRUSH_API void pntr_brush_move_to(pntr_brush* brush, int posX, int posY) {
     brush->path[brush->pathSize++] = PNTR_CLITERAL(pntr_brush_action) {
         .type = PNTR_BRUSH_ACTION_TYPE_MOVE_TO,
         .position = PNTR_CLITERAL(pntr_vector) {
@@ -225,7 +208,7 @@ PNTR_BRUSH_API inline void pntr_brush_move_to(pntr_brush* brush, int posX, int p
     };
 }
 
-PNTR_BRUSH_API inline void pntr_brush_line_to(pntr_brush* brush, int posX, int posY) {
+PNTR_BRUSH_API void pntr_brush_line_to(pntr_brush* brush, int posX, int posY) {
     brush->path[brush->pathSize++] = PNTR_CLITERAL(pntr_brush_action) {
         .type = PNTR_BRUSH_ACTION_TYPE_LINE_TO,
         .position = PNTR_CLITERAL(pntr_vector) {
@@ -313,13 +296,13 @@ PNTR_BRUSH_API void pntr_brush_fill(pntr_brush* brush) {
     pntr_draw_polygon_fill(brush->dst, points, pointsSize, brush->fillStyle);
 }
 
-PNTR_BRUSH_API inline void pntr_brush_stroke_style(pntr_brush* brush, pntr_color color) {
+PNTR_BRUSH_API void pntr_brush_stroke_style(pntr_brush* brush, pntr_color color) {
     if (brush != NULL) {
         brush->strokeStyle = color;
     }
 }
 
-PNTR_BRUSH_API inline void pntr_brush_line_width(pntr_brush* brush, int lineWidth) {
+PNTR_BRUSH_API void pntr_brush_line_width(pntr_brush* brush, int lineWidth) {
     if (brush != NULL) {
         brush->lineWidth = lineWidth;
     }
@@ -339,7 +322,7 @@ PNTR_BRUSH_API void pntr_brush_close_path(pntr_brush* brush) {
     }
 }
 
-PNTR_BRUSH_API inline void pntr_brush_draw_image(pntr_brush* brush, pntr_image* image, int posX, int posY) {
+PNTR_BRUSH_API void pntr_brush_draw_image(pntr_brush* brush, pntr_image* image, int posX, int posY) {
     pntr_draw_image(brush->dst, image, posX, posY);
 }
 
@@ -397,7 +380,7 @@ PNTR_BRUSH_API int pntr_brush_measure_text(pntr_brush* brush, const char* text) 
     return pntr_measure_text(brush->font, text);
 }
 
-PNTR_BRUSH_API inline void pntr_brush_fill_style(pntr_brush* brush, pntr_color color) {
+PNTR_BRUSH_API void pntr_brush_fill_style(pntr_brush* brush, pntr_color color) {
     if (brush != NULL) {
         brush->fillStyle = color;
     }
