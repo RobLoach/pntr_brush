@@ -42,7 +42,7 @@ pntr_brush_fill_text(brush, "Hello World!", 10, 50);
 pntr_unload_brush(brush);
 ```
 
-![pntr_brush screenshot](docs/screenshot.png)
+![pntr_brush screenshot](pntr_brush_test.png)
 
 ## API
 ``` c
@@ -77,6 +77,18 @@ void pntr_brush_stroke_style(pntr_brush* brush, pntr_color color);
 void pntr_brush_fill_style(pntr_brush* brush, pntr_color color);
 void pntr_brush_font(pntr_brush* brush, pntr_font* font);
 int pntr_brush_measure_text(pntr_brush* brush, const char* text);
+```
+
+## example
+
+You can compile the [example](test/pntr_brush_test.c) like this:
+
+```bash
+cmake -B build -G Ninja
+cmake --build build
+
+./build/test/pntr_brush_test
+open pntr_brush_test.png
 ```
 
 # License
