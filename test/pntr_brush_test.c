@@ -9,7 +9,7 @@
 #include "../pntr_brush.h"
 
 int main() {
-    pntr_image* image = pntr_gen_image_color(320, 160, PNTR_WHITE);
+    pntr_image* image = pntr_gen_image_color(320, 240, PNTR_WHITE);
     pntr_brush* brush = pntr_load_brush(image);
     pntr_font* font = pntr_load_font_default();
     pntr_image* gradient = pntr_gen_image_gradient(60, 60, PNTR_RED, PNTR_BLUE, PNTR_GREEN, PNTR_BLACK);
@@ -34,6 +34,7 @@ int main() {
 
     // pntr_brush_arc
     {
+        brush->lineWidth = 4;
         pntr_brush_begin_path(brush);
         pntr_brush_arc(brush, 100, 100, 60, 0, 260, 360);
         pntr_brush_stroke_style(brush, PNTR_BROWN);
@@ -50,6 +51,7 @@ int main() {
         pntr_brush_fill(brush);
     }
 
+    brush->lineWidth = 8;
     pntr_brush_begin_path(brush);
     pntr_brush_move_to(brush, 100, 20);
     pntr_brush_line_to(brush, 150, 40);
