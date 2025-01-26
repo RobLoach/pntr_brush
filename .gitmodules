@@ -1,3 +1,0 @@
-[submodule "vendor/pntr"]
-	path = vendor/pntr
-	url = https://github.com/RobLoach/pntr.git

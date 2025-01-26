@@ -251,12 +251,12 @@ PNTR_BRUSH_API void pntr_brush_stroke(pntr_brush* brush) {
             }
             break;
             case PNTR_BRUSH_ACTION_TYPE_LINE_TO: {
-                pntr_draw_line_vec(brush->dst, brushPosition, action->position, brush->strokeStyle);
+                pntr_draw_line_thick_vec(brush->dst, brushPosition, action->position, brush->lineWidth, brush->strokeStyle);
                 brushPosition = action->position;
             }
             break;
             case PNTR_BRUSH_ACTION_TYPE_ARC: {
-                pntr_draw_arc(brush->dst, action->position.x, action->position.y, action->radius, action->startAngle, action->endAngle, action->segments, brush->strokeStyle);
+                pntr_draw_arc_thick(brush->dst, action->position.x, action->position.y, action->radius, action->startAngle, action->endAngle, action->segments, brush->lineWidth, brush->strokeStyle);
             }
             break;
         }
