@@ -42,7 +42,7 @@ pntr_brush_fill_text(brush, "Hello World!", 10, 50);
 pntr_unload_brush(brush);
 ```
 
-![pntr_brush screenshot](pntr_brush_test.png)
+![pntr_brush screenshot](screenshot.png)
 
 ## API
 ``` c
